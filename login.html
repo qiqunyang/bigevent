@@ -28,7 +28,7 @@
                 </div>
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-password"></i>
-                    <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <input type="password" name="password" required lay-verify="required|pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
                 </div>
 
                 <div class="layui-form-item">
@@ -40,7 +40,7 @@
             </form>
 
         </div>
-        <!-- zhuce的div -->
+        <!-- 注册的div -->
         <div class="reg-box">
             <form class="layui-form" action="">
                 <div class="layui-form-item">
@@ -49,11 +49,11 @@
                 </div>
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-password"></i>
-                    <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <input type="password" name="password" required lay-verify="required|pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-password"></i>
-                    <input type="password" name="password" required lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
+                    <input type="password" name="repassword" required lay-verify="required|pass|repwd" placeholder="再次确认密码" autocomplete="off" class="layui-input">
                 </div>
 
                 <div class="layui-form-item">
@@ -69,7 +69,11 @@
 
     <!-- 导入JQuery -->
     <script src="/assets/lib/jquery.js"></script>
+    <!-- 导入layui js文件 -->
+    <script src="/assets/lib/layui/layui.all.js"></script>
+    <!-- 导入自己的js -->
     <script src="/assets/js/login.js"></script>
+
 </body>
 
 </html>
