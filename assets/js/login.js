@@ -29,21 +29,42 @@ $(function() {
 
     //监听注册表单的提交事件
     $('#form_reg').on('submit', function(e) {
-        e.preventDefault();
-        var data = {
-            username: $('#form_reg [name=username]').val(),
-            password: $('#form_reg [name=password]').val()
-        }
-        $.post('http://ajax.frontend.itheima.net/api/reguser', data,
-            function(res) {
-                if (res.status !== 0) {
-                    return layer.msg(res.message);
-                }
-                layer.msg('注册成功');
+            e.preventDefault();
+            var data = {
+                username: $('#form_reg [name=username]').val(),
+                password: $('#form_reg [name=password]').val()
+            }
+            $.post('/api/reguser', data,
+                function(res) {
+                    if (res.status !== 0) {
+                        return layer.msg(res.message);
+                    }
+                    layer.msg('注册成功');
 
-                //模拟人的点击行为
-                $('#link_login').click();
-            })
+                    //模拟人的点击行为
+                    $('#link_login').click();
+                })
+        })
+        //监听登录表单的提交行为
+    $('#form_login').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/api/login',
+            method: 'POST',
+            //快速获取表单的数据
+            data: $(this).serialize(),
+            success: function(res) {
+                if (res.status !== 0) {
+                    return layer.msg("登录失败");
+                }
+                layer.msg("登录成功");
+                //将登录成功得到的 token 字符串保存到  localStorage中
+                localStorage.setItem('token', res.token);
+                //登陆成功跳转到index页面
+                location.href = '/index.html';
+
+            }
+        })
     })
 
 })
