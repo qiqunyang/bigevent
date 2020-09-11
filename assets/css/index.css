@@ -18,6 +18,7 @@ iframe {
 
 .layui-body {
     overflow: hidden;
+   
 }
 
 a {
@@ -32,7 +33,7 @@ a {
     user-select: none;
 }
 
-.layui-side-scroll {
+.layui-side-scroll .userinfo {
     border-bottom: 1px solid #282b33;
 }
 
