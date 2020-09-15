@@ -58,10 +58,13 @@ $(function() {
             art_state = '草稿'
         })
         //为标单注册submit事件
-    $('#form-pub').on('submit', function(e) {
+    $('#form-repub').on('submit', function(e) {
         e.preventDefault()
         var fd = new FormData($(this)[0])
+        fd.append('content', tinymce.activeEditor.getContent())
+
         fd.append('state', art_state)
+        fd.append('Id', id)
             //将封面裁剪过后的图片输出为一个文件
         $image
             .cropper('getCroppedCanvas', {
@@ -79,18 +82,27 @@ $(function() {
     function publishArticle(fd) {
         $.ajax({
             method: 'POST',
-            url: '/my/article/add',
+            url: '/my/article/edit',
             data: fd,
             contentType: false,
             processData: false,
             success: function(res) {
                 if (res.status !== 0) {
-                    return layer.msg('发布文章失败!');
+                    return layer.msg('修改文章失败!');
                 }
-                layer.msg('发布文章成功!');
+                layer.msg('修改文章成功!');
+
                 window.parent.$('.btn-liebiao').click()
             }
         })
     }
-
+    var id = localStorage.getItem('id');
+    $.ajax({
+        method: 'GET',
+        url: '/my/article/' + id,
+        success: function(res) {
+            form.val('form-repub', res.data)
+            localStorage.removeItem('data')
+        }
+    })
 })

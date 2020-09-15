@@ -128,4 +128,9 @@ $(function() {
             })
         })
     })
+    $('tbody').on('click', '#btn-fabu', function() {
+        var id = $(this).attr('data-id');
+        localStorage.setItem('id', id)
+        location.href = '/user/art_repub.html'
+    })
 })
