@@ -94,7 +94,7 @@ $(function() {
                 method: "GET",
                 url: "/my/article/deletecate/" + id,
                 success: function(res) {
-                    console.log(res);
+
                     if (res.status !== 0) {
                         return layer.msg('删除分类失败!');
                     }

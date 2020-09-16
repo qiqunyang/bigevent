@@ -101,7 +101,12 @@ $(function() {
         method: 'GET',
         url: '/my/article/' + id,
         success: function(res) {
-            form.val('form-repub', res.data)
+
+            form.val('form-repub', res.data);
+            $image
+                .cropper('destroy')
+                .prop('src', 'http://ajax.frontend.itheima.net' + res.data.cover_img)
+                .cropper(options)
             localStorage.removeItem('data')
         }
     })

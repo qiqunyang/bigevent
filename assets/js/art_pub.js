@@ -84,6 +84,7 @@ $(function() {
             contentType: false,
             processData: false,
             success: function(res) {
+
                 if (res.status !== 0) {
                     return layer.msg('发布文章失败!');
                 }
